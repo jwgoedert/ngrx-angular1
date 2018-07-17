@@ -9,6 +9,5 @@ export const isLoggedIn = createSelector(
 
 export const isLoggeOut = createSelector(
   isLoggedIn,
-
-  loggedIn = !loggedIn
+  loggedIn => !loggedIn
 )

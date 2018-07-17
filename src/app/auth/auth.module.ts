@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { StoreModule } from '@ngrx/store';
 import {AuthService} from "./auth.service";
+import {AuthGuard} from "./auth.guard";
 import * as fromAuth from './auth.reducer';
 
 
@@ -29,7 +30,10 @@ export class AuthModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: AuthModule,
-            providers: [AuthService]
+            providers: [
+                AuthService,
+                AuthGuard
+            ]
         }
     }
 }
