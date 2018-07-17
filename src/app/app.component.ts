@@ -3,6 +3,7 @@ import {select, Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {AppState} from './reducers/';
 import { Logout} from './auth/auth.actions';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.store.subscribe(state => console.log('state', state));
+      this.store
+      .pipe(
+        map(state => state.auth.loggedIn)
+      )
+      .subscribe(loggedIn => console.log('loggedIn', loggedIn));
 
     }
 
