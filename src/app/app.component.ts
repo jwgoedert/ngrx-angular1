@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
 
+  isLoggedIn$: Observable<boolean>;
+  isLoggedOut$: Observable<boolean>;
 
 
     constructor(private store: Store<AppState>) {
@@ -19,11 +21,20 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.store
+      this.store.subscribe(state => console.log('state', state));
+
+      this.isLoggedIn$ = this.store
       .pipe(
         map(state => state.auth.loggedIn)
-      )
-      .subscribe(loggedIn => console.log('loggedIn', loggedIn));
+      );
+
+      this.isLoggedOut$ = this.store
+        .pipe(
+          map(state => !state.auth.loggedIn)
+        );
+      
+        console.log('in', this.isLoggedIn$);
+        console.log('out', this.isLoggedOut$);
 
     }
 
