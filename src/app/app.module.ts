@@ -52,8 +52,8 @@ const routes: Routes = [
         MatListModule,
         MatToolbarModule,
         AuthModule.forRoot(),
-        // StoreModule.forRoot(reducers, { metaReducers }),
-        // !environment.production ? StoreDevtoolsModule.instrument() : [],
+        StoreModule.forRoot(reducers, { metaReducers }),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [],
     bootstrap: [AppComponent]

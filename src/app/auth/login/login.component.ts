@@ -37,21 +37,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // const val = this.form.value;
+    const val = this.form.value;
 
-
-    // this.auth.login(val.email, val.password)
-    //   .pipe(
-    //     tap(user => {
-    //       console.log('user', user);
-    //       this.store.dispatch(new Login({user}));
-    //       this.router.navigateByUrl('/courses');
-    //     })
-    //   )  
-    //   .subscribe(
-    //     noop,
-    //     () => alert('Login Failed dude')
-    //   );
+    this.auth.login(val.email, val.password)
+      .pipe(
+        tap(user => {
+          console.log('user', user);
+          this.store.dispatch(new Login({user}));
+          this.router.navigateByUrl('/courses');
+        })
+      )  
+      .subscribe(
+        noop,
+        () => alert('Login Failed dude')
+      );
     // this.store.dispatch(new Login());
 
   }
