@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     const val = this.form.value;
-
+    localStorage.setItem("user", JSON.stringify("testerooo"))
     this.auth.login(val.email, val.password)
       .pipe(
         tap(user => {
